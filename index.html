@@ -308,7 +308,6 @@ button{font:inherit;color:inherit}
     <div class="cab">
       <p class="eyebrow"><i>01</i> Serviços</p>
       <h2>Escolha as peças e monte o orçamento</h2>
-      <p>Os valores marcados como “a partir de” dependem da complexidade e são fechados depois do briefing. O resto é preço fixo.</p>
     </div>
     <div class="atalhos" id="atalhos"></div>
     <div id="lista"></div>
@@ -319,8 +318,8 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <div class="cab">
       <p class="eyebrow"><i>02</i> Como funciona</p>
-      <h2>As regras, combinadas antes</h2>
-      <p>Para não ter surpresa de nenhum dos dois lados.</p>
+      <h2>Condições gerais</h2>
+      <p>Aplicam-se a todos os itens da tabela e integram o orçamento enviado.</p>
     </div>
     <div class="cond-grid" id="condicoes"></div>
   </div>
@@ -410,8 +409,8 @@ const CATALOGO = [
         desc:"Criação da marca com versões principal, reduzida e monocromática, mais os arquivos finais para impressão e web." },
       { nome:"Identidade visual completa", preco:1500, unidade:"pacote",
         desc:"Logotipo, paleta de cores, tipografia, aplicações e manual de identidade visual em PDF." },
-      { nome:"Cartão de visita", preco:200, unidade:"modelo",
-        desc:"Frente e verso, arte fechada e pronta para a gráfica." }
+      { nome:"Cartão de visita", preco:150, unidade:"modelo",
+        desc:"Frente e verso, arte fechada para a gráfica. Valor avulso, fora do pacote de identidade visual." }
     ]
   },
   {
@@ -427,7 +426,7 @@ const CATALOGO = [
       { nome:"Post ou story estático", preco:50, unidade:"peça",
         desc:"Uma arte estática. Para volume mensal, peça um pacote fechado." },
       { nome:"Carrossel", preco:150, unidade:"carrossel",
-        desc:"Até 5 telas, apenas a arte. Telas extras a R$25 cada." },
+        desc:"Até 8 páginas, apenas a arte. Páginas extras a R$25 cada." },
       { nome:"E-mail marketing", preco:150, unidade:"peça",
         desc:"Layout da peça em imagem. Montagem em HTML e disparo não estão inclusos." },
       { nome:"Banner para site", preco:120, unidade:"conjunto",
@@ -486,18 +485,18 @@ const CATALOGO = [
    3. CONDIÇÕES
    ═══════════════════════════════════════════════ */
 const CONDICOES = [
-  ["Alterações",
-   "Cada peça inclui 3 rodadas de ajuste. A partir da quarta, cada rodada custa R$60."],
+  ["Escopo de alterações",
+   "Cada peça inclui 3 rodadas de ajuste sobre o layout apresentado. A partir da quarta, cada rodada é cobrada a R$60. Mudança de briefing ou de conceito não configura ajuste e é orçada como nova peça."],
   ["Prazos",
-   "Definidos no orçamento, peça a peça. A contagem começa depois que o briefing estiver completo e o material necessário estiver em mãos."],
+   "Definidos por peça no orçamento. A contagem tem início com o briefing completo e o material de apoio entregue. Atrasos no envio de conteúdo ou na aprovação de etapas deslocam a entrega na mesma proporção."],
   ["Pagamento",
-   "Combinado na etapa de orçamento, conforme o tamanho e o prazo do projeto."],
+   "Definido no orçamento, conforme o volume e o prazo do projeto."],
   ["Material gerado por IA",
-   "As 3 rodadas de ajuste não valem para material em IA. Está inclusa uma alteração, desde que não exija gerar o material de novo. Se for preciso refazer as gerações, o custo é levantado e aprovado por você antes de eu executar."],
-  ["Direitos e entrega de arquivos",
-   "Você recebe os arquivos finais com direito de uso pleno das peças. Os arquivos editáveis permanecem comigo. Em material que vai para gráfica, envio também o .eps, para facilitar a impressão e mudanças de formato."],
+   "Segue regra própria: está inclusa uma alteração, limitada a ajustes que não exijam nova geração. Alteração que implique regerar o material tem o custo das gerações levantado e submetido à aprovação antes da execução."],
+  ["Entrega e direitos de uso",
+   "A entrega compreende os arquivos finais fechados, nos formatos previstos no orçamento, com direito de uso pleno das peças. Arquivos editáveis não são cedidos. Material destinado a impressão acompanha arquivo em .eps, para viabilizar a produção gráfica e adaptações de formato."],
   ["Aprovação",
-   "A arte é considerada aprovada quando você confirma por escrito. Erros identificados depois da aprovação e do envio para produção são de responsabilidade do cliente."]
+   "A aprovação é formalizada por escrito. Após a aprovação e o envio para produção, erros não identificados nessa etapa são de responsabilidade do cliente."]
 ];
 
 /* ═══════════════════════════════════════════════
@@ -507,6 +506,8 @@ const brl = n => "R$ " + n.toLocaleString("pt-BR");
 const estado = new Map();
 const $ = s => document.querySelector(s);
 const zapLink = txt => "https://wa.me/" + CONFIG.whatsapp + (txt ? "?text=" + encodeURIComponent(txt) : "");
+const REF = "OR-" + new Date().toISOString().slice(2,10).replace(/-/g,"")
+          + "-" + Math.random().toString(36).slice(2,5).toUpperCase();
 
 /* identidade */
 $("#sigTopo").textContent = CONFIG.assinatura;
@@ -638,8 +639,9 @@ function abrirFolha(){
 
   atualizarAviso();
   const hoje = new Date().toLocaleDateString("pt-BR");
-  $("#folhaSub").textContent = "Gerado em " + hoje + " · " + CONFIG.validade;
-  $("#cabImpressao").textContent = CONFIG.nome + " · " + CONFIG.funcao + " · " + CONFIG.email + " · " + hoje;
+  $("#folhaSub").textContent = "Ref " + REF + " · " + hoje + " · " + CONFIG.validade;
+  $("#cabImpressao").textContent =
+    [CONFIG.nome, CONFIG.funcao, CONFIG.local, CONFIG.email].filter(Boolean).join(" · ");
   $("#fundo").classList.add("aberta");
   $("#cliente").focus();
 }
@@ -687,15 +689,30 @@ $("#linhas").addEventListener("click", e => {
 
 function textoOrcamento(){
   const nome = $("#cliente").value.trim();
-  let t = "*Orçamento — " + CONFIG.nome + "*\n";
-  if (nome) t += "Cliente: " + nome + "\n";
-  t += "\n";
-  selecionados().forEach(s => {
-    t += "• " + s.qtd + "× " + s.item.nome + " — " + brl(s.qtd * precoUnit(s)) + "\n";
+  const sel = selecionados();
+  const L = [];
+
+  L.push("*SOLICITAÇÃO DE ORÇAMENTO*");
+  L.push("Ref: " + REF);
+  L.push("Data: " + new Date().toLocaleDateString("pt-BR"));
+  if (nome) L.push("Cliente: " + nome);
+  L.push("");
+  L.push("*ITENS*");
+
+  sel.forEach((s, i) => {
+    const u = precoUnit(s);
+    L.push(`${i + 1}. ${s.item.nome}`);
+    L.push(`   ${s.qtd} × ${brl(u)} = ${brl(s.qtd * u)}${s.item.apartirDe ? "  (base)" : ""}`);
   });
-  t += "\n*Total estimado: " + brl(total()) + "*\n";
-  t += "\nEstimativa gerada na tabela de serviços. Podemos fechar o escopo pelo briefing.";
-  return t;
+
+  L.push("");
+  L.push("*TOTAL ESTIMADO: " + brl(total()) + "*");
+  L.push("");
+  if (sel.some(s => s.item.apartirDe))
+    L.push("(base) valor de partida, fechado após definição de escopo.");
+  L.push("Prazo e forma de pagamento definidos no orçamento.");
+
+  return L.join("\n");
 }
 
 $("#btVer").onclick = abrirFolha;
