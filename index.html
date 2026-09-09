@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabela de serviços — Guga, direção de arte e filmmaker</title>
+<meta name="description" content="Design, campanha e vídeo com o preço na mesa. Monte seu orçamento e envie direto pelo WhatsApp.">
+<meta name="theme-color" content="#0A0A0C">
+<meta property="og:title" content="Tabela de serviços — Guga">
+<meta property="og:description" content="Design, campanha e vídeo com o preço na mesa. Monte seu orçamento em um minuto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ PALETA — troque aqui para aplicar sua marca ═══ */
+:root{
+  --bg:#0A0A0C;
+  --bg-2:#0E0E11;
+  --surface:#151519;
+  --line:#26262C;
+  --txt:#F5F3F1;
+  --dim:#8B8B95;
+  --accent:#FF4D18;
+  --accent-2:#FF9040;
+  --paper:#EDECE8;
+  --paper-2:#F7F6F4;
+  --paper-line:#D3D1CB;
+  --ink:#111114;
+  --ink-dim:#5D5D66;
+
+  --f:"Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --max:72rem;
+  --pad:clamp(1.25rem, 4vw, 3rem);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--txt);
+  font-family:var(--f);font-size:16px;line-height:1.55;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:5.5rem;overflow-x:hidden;
+}
+h1,h2,h3{margin:0;font-weight:600;line-height:1.02;letter-spacing:-.035em}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+
+/* ═══ TOPO ═══ */
+.topo{
+  position:absolute;top:0;left:0;right:0;z-index:20;
+  padding-top:1.5rem;
+}
+.topo-in{display:flex;align-items:center;gap:1.5rem}
+.assinatura{display:flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:600;letter-spacing:-.02em}
+.assinatura .mk{
+  width:1.375rem;height:1.375rem;border-radius:50%;
+  background:var(--accent);display:inline-block;flex:none;
+  box-shadow:0 0 16px rgba(255,77,24,.55);
+}
+.topo nav{display:flex;gap:1.5rem;margin-left:auto;font-size:.875rem;color:var(--dim)}
+.topo nav a:hover{color:var(--txt)}
+.topo .zap{
+  border:1px solid var(--line);border-radius:999px;padding:.45rem 1rem;
+  font-size:.875rem;font-weight:500;
+}
+.topo .zap:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;overflow:hidden;padding:10rem 0 8.5rem;isolation:isolate}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:clamp(90px,12vw,170px) clamp(90px,12vw,170px);
+  background-position:center;
+  opacity:.4;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 35%,#000 20%,transparent 78%);
+}
+.hero::after{
+  content:"";position:absolute;z-index:-1;
+  left:50%;bottom:-42%;transform:translateX(-50%);
+  width:min(115vw,72rem);aspect-ratio:1.4/1;
+  background:radial-gradient(ellipse at center,
+    rgba(255,144,64,.85) 0%, rgba(255,77,24,.62) 26%,
+    rgba(190,45,10,.30) 48%, transparent 72%);
+  filter:blur(58px);
+}
+.hero-in{position:relative;text-align:center}
+.selo{
+  display:inline-flex;align-items:center;gap:.55rem;
+  border:1px solid var(--line);background:rgba(255,255,255,.03);
+  border-radius:999px;padding:.4rem .95rem;font-size:.8125rem;color:var(--dim);
+  margin-bottom:2rem;
+}
+.selo b{color:var(--accent);font-weight:600}
+.hero h1{
+  font-size:clamp(2.5rem,7.4vw,5.25rem);
+  max-width:16ch;margin:0 auto;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{
+  margin:1.5rem auto 0;max-width:46ch;
+  font-size:clamp(1rem,1.6vw,1.1875rem);color:#B9B8C0;line-height:1.5;
+}
+.hero-bt{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:2.25rem}
+.bt{
+  border:0;border-radius:999px;padding:.85rem 1.6rem;
+  font-weight:600;font-size:.9375rem;cursor:pointer;letter-spacing:-.01em;
+  transition:filter .18s ease,border-color .18s ease,background .18s ease;
+}
+.bt-p{background:var(--accent);color:#180500}
+.bt-p:hover{filter:brightness(1.1)}
+.bt-g{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--txt)}
+.bt-g:hover{border-color:#4A4A54}
+.bt-b{background:var(--txt);color:var(--ink)}
+.bt-b:hover{filter:brightness(.93)}
+
+
+/* ═══ SEÇÕES ═══ */
+.sec{padding:5.5rem 0}
+.sec-claro{background:var(--paper);color:var(--ink)}
+.cab{margin-bottom:3rem}
+.eyebrow{
+  display:flex;align-items:center;gap:.65rem;
+  font-size:.8125rem;color:var(--dim);margin-bottom:1.1rem;
+}
+.eyebrow i{
+  font-style:normal;font-weight:600;color:var(--accent);
+  border:1px solid rgba(255,77,24,.35);border-radius:999px;
+  padding:.1rem .5rem;font-size:.75rem;
+}
+.sec-claro .eyebrow{color:var(--ink-dim)}
+.cab h2{font-size:clamp(1.9rem,4.4vw,3rem);max-width:18ch}
+.cab p{margin-top:1rem;max-width:52ch;color:var(--dim);font-size:1.0625rem}
+.sec-claro .cab p{color:var(--ink-dim)}
+
+/* atalhos de categoria */
+.atalhos{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.atalhos a{
+  border:1px solid var(--paper-line);border-radius:999px;
+  padding:.4rem .9rem;font-size:.875rem;font-weight:500;
+  transition:background .16s ease,border-color .16s ease,color .16s ease;
+}
+.atalhos a:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* ═══ TABELA ═══ */
+.grupo{margin-top:3rem;scroll-margin-top:2rem}
+.grupo:first-child{margin-top:0}
+.grupo-cab{display:flex;align-items:baseline;gap:1rem;padding-bottom:.6rem;border-bottom:1.5px solid var(--ink)}
+.grupo-cab h3{font-size:1.3rem}
+.grupo-cab span{margin-left:auto;font-size:.8125rem;color:var(--ink-dim);font-weight:500}
+
+.item{
+  display:grid;grid-template-columns:1fr auto;gap:.2rem 1.5rem;align-items:center;
+  padding:1.05rem .9rem 1.05rem 1rem;
+  border-bottom:1px solid var(--paper-line);
+  border-left:3px solid transparent;
+  transition:background .16s ease,border-color .16s ease;
+}
+.item.on{background:var(--paper-2);border-left-color:var(--accent)}
+.item .nome{font-weight:600;font-size:1.0625rem;letter-spacing:-.015em}
+.item .desc{grid-column:1;font-size:.875rem;color:var(--ink-dim);max-width:54ch;line-height:1.45}
+.item .lado{grid-row:1 / span 2;grid-column:2;display:flex;flex-direction:column;align-items:flex-end;gap:.55rem}
+.item .preco{font-weight:600;font-size:1.0625rem;white-space:nowrap;text-align:right;letter-spacing:-.02em}
+.item .preco em{display:block;font-style:normal;font-weight:500;font-size:.75rem;color:var(--ink-dim)}
+.item.on .preco{color:var(--accent)}
+.item .consulta{font-size:.8125rem;color:var(--ink-dim)}
+
+.qtd{display:flex;align-items:center;border:1.5px solid var(--ink);border-radius:999px}
+.qtd button{
+  width:2.1rem;height:2.1rem;border:0;background:none;cursor:pointer;
+  font-size:1.1rem;font-weight:600;line-height:1;border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .14s ease,color .14s ease;
+}
+.qtd button:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.qtd button:disabled{opacity:.28;cursor:default}
+.qtd output{min-width:1.9rem;text-align:center;font-weight:600;font-size:.9375rem}
+
+/* ═══ CONDIÇÕES ═══ */
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.cond-cel{background:var(--bg-2);padding:1.75rem 1.5rem}
+.cond-cel h3{font-size:1.0625rem;margin-bottom:.6rem;letter-spacing:-.02em}
+.cond-cel p{font-size:.9375rem;color:var(--dim);line-height:1.55;max-width:44ch}
+
+/* ═══ FECHAMENTO ═══ */
+.fim{position:relative;overflow:hidden;padding:6rem 0 4rem;text-align:center;isolation:isolate}
+.fim::after{
+  content:"";position:absolute;z-index:-1;left:50%;top:38%;transform:translate(-50%,-50%);
+  width:min(110vw,58rem);aspect-ratio:1.6/1;
+  background:radial-gradient(ellipse at center,rgba(255,77,24,.42) 0%,rgba(255,77,24,.14) 42%,transparent 70%);
+  filter:blur(64px);
+}
+.fim h2{font-size:clamp(1.9rem,5vw,3.25rem);max-width:17ch;margin:0 auto}
+.fim p{margin:1.25rem auto 0;max-width:42ch;color:#B9B8C0}
+.fim .hero-bt{margin-top:2rem}
+
+.rodape{border-top:1px solid var(--line);margin-top:5rem;padding:2.25rem 0 2.5rem}
+.rodape-in{display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.sig .nm{font-size:1.375rem;font-weight:600;letter-spacing:-.03em}
+.sig .fn{font-size:.9375rem;color:var(--dim);margin-top:.1rem}
+.contatos{margin-left:auto;text-align:right;font-size:.875rem;color:var(--dim);line-height:1.9}
+.contatos a:hover{color:var(--accent)}
+.legal{margin-top:2rem;font-size:.75rem;color:#5C5C66;max-width:60ch}
+
+/* ═══ BARRA DE TOTAL ═══ */
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  background:rgba(14,14,17,.86);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  transform:translateY(115%);transition:transform .3s cubic-bezier(.2,.7,.3,1);
+}
+.barra.ativa{transform:translateY(0)}
+.barra-in{max-width:var(--max);margin:0 auto;padding:.85rem var(--pad);display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.barra .tot .n{font-size:.75rem;color:var(--dim)}
+.barra .tot .v{font-size:1.5rem;font-weight:600;letter-spacing:-.03em;line-height:1.15}
+.barra .acoes{margin-left:auto;display:flex;gap:.6rem}
+.barra .bt{padding:.7rem 1.35rem}
+
+/* ═══ FOLHA DO ORÇAMENTO ═══ */
+.fundo{position:fixed;inset:0;background:rgba(6,6,8,.78);backdrop-filter:blur(6px);z-index:50;display:none;padding:1.5rem;overflow:auto}
+.fundo.aberta{display:block}
+.folha{background:var(--paper-2);color:var(--ink);max-width:38rem;margin:0 auto;padding:2rem 1.75rem 1.75rem;border-radius:6px}
+.folha h2{font-size:1.75rem;margin-bottom:.3rem}
+.folha .sub{font-size:.875rem;color:var(--ink-dim);margin-bottom:1.5rem}
+.campo{display:block;margin-bottom:1.25rem}
+.campo span{display:block;font-size:.8125rem;font-weight:600;margin-bottom:.35rem}
+.campo input{width:100%;padding:.7rem .8rem;font:inherit;border:1.5px solid var(--paper-line);border-radius:4px;background:#fff}
+.campo input:focus{border-color:var(--accent);outline:none}
+.linhas{border-top:1.5px solid var(--ink);margin-bottom:1.25rem}
+.linha{display:flex;gap:1rem;justify-content:space-between;align-items:flex-start;padding:.62rem 0;border-bottom:1px solid var(--paper-line);font-size:.9375rem}
+.lin-nome{flex:1;min-width:9rem;padding-top:.28rem}
+.linha .q{color:var(--ink-dim);font-weight:600}
+.lin-base{display:block;font-size:.75rem;font-weight:500;color:var(--ink-dim);margin-top:.2rem}
+.lin-base button{border:0;background:none;padding:0;font-size:.75rem;color:var(--accent);text-decoration:underline;cursor:pointer}
+.linha .v{font-weight:600;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;justify-content:flex-end}
+.v .uni{display:inline-flex;align-items:center;gap:.25rem;font-weight:500;color:var(--ink-dim)}
+.v input.pu{width:5.25rem;padding:.32rem .45rem;font:inherit;font-weight:600;color:var(--ink);text-align:right;border:1.5px solid var(--paper-line);border-radius:4px;background:#fff}
+.v input.pu:focus{border-color:var(--accent);outline:none}
+.v .mult{font-weight:500;color:var(--ink-dim)}
+.v .lin-total{min-width:5rem;text-align:right}
+.linha.total{border-bottom:0;padding-top:.95rem;font-size:1.2rem}
+.linha.total .v{font-size:1.6rem;letter-spacing:-.03em;color:var(--accent)}
+.aviso{font-size:.8125rem;color:var(--ink-dim);background:#E4E2DD;padding:.8rem .9rem;border-radius:4px;margin-bottom:1.5rem;line-height:1.5}
+.folha-acoes{display:flex;gap:.6rem;flex-wrap:wrap}
+.folha-acoes .bt{padding:.72rem 1.25rem;font-size:.9375rem}
+.bt-ink{background:var(--ink);color:var(--paper-2)}
+.bt-out{background:none;border:1.5px solid var(--paper-line);color:var(--ink)}
+.bt-out:hover{border-color:var(--ink)}
+.so-impressao{display:none}
+
+@media (max-width:760px){
+  .topo nav{display:none}
+  .hero{padding:8rem 0 6rem}
+  .item{grid-template-columns:1fr;gap:.35rem}
+  .item .lado{grid-row:auto;grid-column:1;flex-direction:row;align-items:center;justify-content:space-between;width:100%;margin-top:.65rem}
+  .item .preco{text-align:left}
+  .item .preco em{text-align:left}
+  .barra .acoes{margin-left:0;width:100%}
+  .barra .acoes .bt{flex:1}
+  .contatos{margin-left:0;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+@media print{
+  body{background:#fff;color:#000;padding:0}
+  .topo,.hero,.sec,.fim,.rodape,.barra,.folha-acoes{display:none!important}
+  .fundo{position:static;display:block!important;background:none;backdrop-filter:none;padding:0;overflow:visible}
+  .folha{max-width:none;padding:0;background:none}
+  .so-impressao{display:block;margin-bottom:1.5rem;font-size:.8125rem;color:#555}
+  .aviso{background:none;border:1px solid #ccc}
+  .lin-base,.v .uni,.v .mult,.v input.pu{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="assinatura" href="#topo"><span class="mk" aria-hidden="true"></span><span id="sigTopo">guga</span></a>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="zap" id="zapTopo" href="#" target="_blank" rel="noopener">Falar comigo</a>
+  </div>
+</header>
+
+<section class="hero" id="topo">
+  <div class="wrap hero-in">
+    <p class="selo"><b>●</b> Tabela aberta <span id="seloVig"></span></p>
+    <h1>Orçamento de design e vídeo</h1>
+    <p class="lead">Escolha as peças que você precisa, veja o total na hora e receba a proposta sem esperar orçamento.</p>
+    <div class="hero-bt">
+      <button class="bt bt-p" onclick="document.getElementById('servicos').scrollIntoView()">Montar meu orçamento</button>
+      <a class="bt bt-g" href="#processo">Como funciona</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-claro" id="servicos">
+  <div class="wrap">
+    <div class="cab">
+      <p class="eyebrow"><i>01</i> Serviços</p>
+      <h2>Escolha as peças e monte o orçamento</h2>
+      <p>Os valores marcados como “a partir de” dependem da complexidade e são fechados depois do briefing. O resto é preço fixo.</p>
+    </div>
+    <div class="atalhos" id="atalhos"></div>
+    <div id="lista"></div>
+  </div>
+</section>
+
+<section class="sec" id="processo">
+  <div class="wrap">
+    <div class="cab">
+      <p class="eyebrow"><i>02</i> Como funciona</p>
+      <h2>As regras, combinadas antes</h2>
+      <p>Para não ter surpresa de nenhum dos dois lados.</p>
+    </div>
+    <div class="cond-grid" id="condicoes"></div>
+  </div>
+</section>
+
+<section class="fim" id="contato">
+  <div class="wrap">
+    <h2>Me manda o que você precisa</h2>
+    <p>Monte o orçamento aqui em cima ou fale comigo direto. Respondo no mesmo dia.</p>
+    <div class="hero-bt">
+      <button class="bt bt-p" onclick="document.getElementById('servicos').scrollIntoView()">Montar meu orçamento</button>
+      <a class="bt bt-g" id="zapFim" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+  <div class="wrap rodape">
+    <div class="rodape-in">
+      <div class="sig">
+        <div class="nm" id="sigNome"></div>
+        <div class="fn" id="sigFuncao"></div>
+      </div>
+      <div class="contatos" id="contatos"></div>
+    </div>
+    <p class="legal" id="legal"></p>
+  </div>
+</section>
+
+<div class="barra" id="barra" role="region" aria-label="Resumo do orçamento">
+  <div class="barra-in">
+    <div class="tot">
+      <div class="n" id="contagem">Nenhum item</div>
+      <div class="v" id="totalBarra" aria-live="polite">R$ 0</div>
+    </div>
+    <div class="acoes">
+      <button class="bt bt-g" id="btLimpar" type="button">Limpar</button>
+      <button class="bt bt-p" id="btVer" type="button">Ver orçamento</button>
+    </div>
+  </div>
+</div>
+
+<div class="fundo" id="fundo" role="dialog" aria-modal="true" aria-labelledby="folhaTit">
+  <div class="folha">
+    <p class="so-impressao" id="cabImpressao"></p>
+    <h2 id="folhaTit">Seu orçamento</h2>
+    <p class="sub" id="folhaSub"></p>
+    <label class="campo">
+      <span>Nome ou empresa</span>
+      <input id="cliente" type="text" placeholder="Para quem é este orçamento?" autocomplete="organization">
+    </label>
+    <div class="linhas" id="linhas"></div>
+    <p class="aviso" id="aviso"></p>
+    <div class="folha-acoes">
+      <button class="bt bt-ink" id="btZap" type="button">Enviar pelo WhatsApp</button>
+      <button class="bt bt-out" id="btCopiar" type="button">Copiar texto</button>
+      <button class="bt bt-out" id="btPdf" type="button">Salvar em PDF</button>
+      <button class="bt bt-out" id="btFechar" type="button">Voltar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   1. SEUS DADOS
+   ═══════════════════════════════════════════════ */
+const CONFIG = {
+  assinatura: "guga",                        // marca pequena no topo
+  nome:       "Guga",                        // assinatura do rodapé
+  funcao:     "Direção de arte e filmmaker",
+  local:      "Brusque, SC",
+  whatsapp:   "5547900000000",               // 55 + DDD + número, só dígitos
+  email:      "contato@seudominio.com.br",
+  instagram:  "@seuinstagram",
+  vigencia:   "2026",
+  validade:   "Proposta válida por 15 dias",
+
+  // Quem pode ajustar valores na folha do orçamento:
+  // "link"   → só quem abrir a página com ?ajuste no fim do endereço
+  // "sempre" → qualquer pessoa, inclusive o cliente
+  // "nunca"  → valores travados
+  edicaoDeValores: "link"
+};
+
+/* ═══════════════════════════════════════════════
+   2. TABELA
+   ═══════════════════════════════════════════════ */
+const CATALOGO = [
+  {
+    grupo: "Marca e identidade",
+    itens: [
+      { nome:"Logotipo", preco:600, apartirDe:true, unidade:"marca",
+        desc:"Criação da marca com versões principal, reduzida e monocromática, mais os arquivos finais para impressão e web." },
+      { nome:"Identidade visual completa", preco:1500, unidade:"pacote",
+        desc:"Logotipo, paleta de cores, tipografia, aplicações e manual de identidade visual em PDF." },
+      { nome:"Cartão de visita", preco:200, unidade:"modelo",
+        desc:"Frente e verso, arte fechada e pronta para a gráfica." }
+    ]
+  },
+  {
+    grupo: "Redes sociais e digital",
+    itens: [
+      { nome:"Post ou story estático", preco:50, unidade:"peça",
+        desc:"Uma arte estática. Para volume mensal, peça um pacote fechado." },
+      { nome:"Carrossel", preco:150, unidade:"carrossel",
+        desc:"Até 5 telas, apenas a arte. Telas extras a R$25 cada." },
+      { nome:"E-mail marketing", preco:150, unidade:"peça",
+        desc:"Layout da peça em imagem. Montagem em HTML e disparo não estão inclusos." },
+      { nome:"Banner para site", preco:120, unidade:"conjunto",
+        desc:"Versão desktop e mobile do mesmo banner." },
+      { nome:"Mini banner", preco:50, unidade:"peça",
+        desc:"Peça avulsa em formato reduzido." },
+      { nome:"Apresentação em PDF", preco:50, apartirDe:true, unidade:"página", min:5,
+        desc:"Diagramação por página, mínimo de 5 páginas. Conteúdo e textos por conta do cliente." },
+      { nome:"Landing page", preco:1500, apartirDe:true, unidade:"página",
+        desc:"Layout da página em desktop e mobile. Programação e hospedagem cobradas à parte." }
+    ]
+  },
+  {
+    grupo: "Campanha",
+    itens: [
+      { nome:"Conceito visual de campanha (KV)", preco:500, unidade:"campanha",
+        desc:"Peça-conceito que define o visual da campanha e serve de base para todas as outras." },
+      { nome:"Adaptação de formato", preco:0, unidade:"peça", adapt:true,
+        desc:"Peça derivada de um KV já aprovado: 40% do valor de tabela da peça, calculado no orçamento final." }
+    ]
+  },
+  {
+    grupo: "Inteligência artificial",
+    itens: [
+      { nome:"Imagem gerada por IA", preco:80, unidade:"imagem",
+        desc:"Uma imagem aprovada, tratada e no formato da peça, incluindo as rodadas de geração até chegar ao resultado." },
+      { nome:"Vídeo em IA até 30 segundos", preco:350, unidade:"vídeo",
+        desc:"Roteiro visual, geração das cenas, montagem e trilha, em um formato. Locução é orçada à parte." },
+      { nome:"Vídeo em IA até 1 minuto", preco:500, unidade:"vídeo",
+        desc:"Mesmo escopo do vídeo de 30 segundos, com o dobro de cenas para gerar e montar." }
+    ]
+  },
+  {
+    grupo: "Impressos",
+    itens: [
+      { nome:"Panfleto frente e verso", preco:200, unidade:"modelo",
+        desc:"Arte fechada nos dois lados, pronta para impressão." },
+      { nome:"Folder com 1 dobra", preco:350, unidade:"modelo",
+        desc:"Quatro páginas, arte fechada com sangria e marcas de dobra." },
+      { nome:"Folder com 2 dobras", preco:500, unidade:"modelo",
+        desc:"Seis páginas, arte fechada com sangria e marcas de dobra." }
+    ]
+  },
+  {
+    grupo: "Grandes formatos",
+    itens: [
+      { nome:"Outdoor", preco:350, unidade:"peça",
+        desc:"Arte em alta resolução no formato do veículo de mídia, com prova de leitura à distância." },
+      { nome:"Plotagem de veículo", preco:500, unidade:"veículo",
+        desc:"Projeto sobre gabarito do modelo, com vistas laterais, traseira e capô." }
+    ]
+  }
+];
+
+/* ═══════════════════════════════════════════════
+   3. CONDIÇÕES
+   ═══════════════════════════════════════════════ */
+const CONDICOES = [
+  ["Alterações",
+   "Cada peça inclui 3 rodadas de ajuste. A partir da quarta, cada rodada custa R$60."],
+  ["Prazos",
+   "Definidos no orçamento, peça a peça. A contagem começa depois que o briefing estiver completo e o material necessário estiver em mãos."],
+  ["Pagamento",
+   "Combinado na etapa de orçamento, conforme o tamanho e o prazo do projeto."],
+  ["Material gerado por IA",
+   "Imagens e vídeos em IA entram como item no orçamento, porque envolvem custo de ferramenta e várias rodadas de geração até o resultado aprovado. Em vídeo, cada ajuste significa gerar as cenas de novo: estão inclusas 2 rodadas."],
+  ["Direitos e entrega de arquivos",
+   "Você recebe os arquivos finais com direito de uso pleno das peças. Os arquivos editáveis permanecem comigo. Em material que vai para gráfica, envio também o .eps, para facilitar a impressão e mudanças de formato."],
+  ["Aprovação",
+   "A arte é considerada aprovada quando você confirma por escrito. Erros identificados depois da aprovação e do envio para produção são de responsabilidade do cliente."]
+];
+
+/* ═══════════════════════════════════════════════
+   Funcionamento
+   ═══════════════════════════════════════════════ */
+const brl = n => "R$ " + n.toLocaleString("pt-BR");
+const estado = new Map();
+const $ = s => document.querySelector(s);
+const zapLink = txt => "https://wa.me/" + CONFIG.whatsapp + (txt ? "?text=" + encodeURIComponent(txt) : "");
+
+/* identidade */
+$("#sigTopo").textContent  = CONFIG.assinatura;
+$("#sigNome").textContent  = CONFIG.nome;
+$("#sigFuncao").textContent= CONFIG.funcao;
+$("#seloVig").textContent  = CONFIG.vigencia;
+$("#zapTopo").href = $("#zapFim").href = zapLink("Oi! Vim pela tabela de serviços.");
+$("#contatos").innerHTML =
+  `<div>${CONFIG.local}</div>
+   <div><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></div>
+   <div><a href="${zapLink("")}" target="_blank" rel="noopener">WhatsApp</a> · ${CONFIG.instagram}</div>`;
+$("#legal").textContent =
+  `${CONFIG.nome} · ${CONFIG.funcao} · Tabela ${CONFIG.vigencia}. ${CONFIG.validade}. Valores sujeitos a alteração sem aviso prévio.`;
+
+/* lista */
+const lista = $("#lista");
+const atalhos = $("#atalhos");
+
+CATALOGO.forEach((g, gi) => {
+  const slug = "g" + gi;
+  atalhos.insertAdjacentHTML("beforeend", `<a href="#${slug}">${g.grupo}</a>`);
+
+  const sec = document.createElement("section");
+  sec.className = "grupo";
+  sec.id = slug;
+  sec.innerHTML = `<div class="grupo-cab"><h3>${g.grupo}</h3>
+    <span>${g.itens.length} ${g.itens.length === 1 ? "item" : "itens"}</span></div>`;
+
+  g.itens.forEach((it, ii) => {
+    const id = gi + "-" + ii;
+    it.id = id;
+
+    const preco = it.adapt
+      ? `<div class="preco">40%<em>do valor da peça</em></div>`
+      : `<div class="preco">${it.apartirDe ? "a partir de<br>" : ""}${brl(it.preco)}<em>por ${it.unidade}</em></div>`;
+
+    const contador = it.adapt
+      ? `<span class="consulta">sob consulta</span>`
+      : `<div class="qtd">
+           <button type="button" data-a="-" aria-label="Remover uma unidade de ${it.nome}" disabled>−</button>
+           <output aria-label="Quantidade de ${it.nome}">0</output>
+           <button type="button" data-a="+" aria-label="Adicionar uma unidade de ${it.nome}">+</button>
+         </div>`;
+
+    const row = document.createElement("div");
+    row.className = "item";
+    row.dataset.id = id;
+    row.innerHTML = `<div class="nome">${it.nome}</div>
+      <div class="desc">${it.desc}</div>
+      <div class="lado">${preco}${contador}</div>`;
+    sec.appendChild(row);
+    if (!it.adapt) estado.set(id, { item: it, qtd: 0, ajuste: null });
+  });
+  lista.appendChild(sec);
+});
+
+/* condições */
+CONDICOES.forEach(([t, d]) => {
+  $("#condicoes").insertAdjacentHTML("beforeend",
+    `<div class="cond-cel"><h3>${t}</h3><p>${d}</p></div>`);
+});
+
+/* contadores */
+lista.addEventListener("click", e => {
+  const b = e.target.closest("button[data-a]");
+  if (!b) return;
+  const row = b.closest(".item");
+  const st = estado.get(row.dataset.id);
+  const passo = st.item.min && st.qtd === 0 ? st.item.min : 1;
+  st.qtd = Math.max(0, b.dataset.a === "+" ? st.qtd + passo : st.qtd - 1);
+  if (st.item.min && st.qtd > 0 && st.qtd < st.item.min) st.qtd = 0;
+  row.querySelector("output").textContent = st.qtd;
+  row.querySelector('[data-a="-"]').disabled = st.qtd === 0;
+  row.classList.toggle("on", st.qtd > 0);
+  atualizar();
+});
+
+function selecionados(){ return [...estado.values()].filter(s => s.qtd > 0); }
+function precoUnit(s){ return s.ajuste !== null ? s.ajuste : s.item.preco; }
+function total(){ return selecionados().reduce((a, x) => a + x.qtd * precoUnit(x), 0); }
+function podeEditar(){
+  if (CONFIG.edicaoDeValores === "sempre") return true;
+  if (CONFIG.edicaoDeValores === "nunca")  return false;
+  return location.search.includes("ajuste") || location.hash.includes("ajuste");
+}
+function atualizar(){
+  const sel = selecionados();
+  const n = sel.reduce((a, x) => a + x.qtd, 0);
+  $("#totalBarra").textContent = brl(total());
+  $("#contagem").textContent = n === 0 ? "Nenhum item" : n + (n === 1 ? " item selecionado" : " itens selecionados");
+  $("#barra").classList.toggle("ativa", sel.length > 0);
+}
+
+/* folha */
+function abrirFolha(){
+  const edit = podeEditar();
+  const alvo = $("#linhas");
+  alvo.innerHTML = "";
+
+  selecionados().forEach(s => {
+    const u = precoUnit(s);
+    const mudou = u !== s.item.preco;
+    const valor = edit
+      ? `<span class="uni">R$ <input class="pu" type="number" min="0" step="10" inputmode="numeric"
+             value="${u}" data-id="${s.item.id}" aria-label="Valor por ${s.item.unidade} de ${s.item.nome}"></span>
+         ${s.qtd > 1 ? `<span class="mult">× ${s.qtd}</span>` : ""}
+         <b class="lin-total">${brl(u * s.qtd)}</b>`
+      : `<b class="lin-total">${brl(u * s.qtd)}</b>`;
+
+    alvo.insertAdjacentHTML("beforeend", `
+      <div class="linha">
+        <div class="lin-nome"><span class="q">${s.qtd}×</span> ${s.item.nome}
+          <span class="lin-base" data-base="${s.item.id}"${mudou ? "" : " hidden"}>
+            Tabela: ${brl(s.item.preco)}
+            <button type="button" data-r="${s.item.id}">voltar ao valor de tabela</button>
+          </span>
+        </div>
+        <div class="v">${valor}</div>
+      </div>`);
+  });
+
+  alvo.insertAdjacentHTML("beforeend",
+    `<div class="linha total"><div>Total estimado</div><div class="v" id="totalFolha">${brl(total())}</div></div>`);
+
+  atualizarAviso();
+  const hoje = new Date().toLocaleDateString("pt-BR");
+  $("#folhaSub").textContent = "Gerado em " + hoje + " · " + CONFIG.validade;
+  $("#cabImpressao").textContent = CONFIG.nome + " · " + CONFIG.funcao + " · " + CONFIG.email + " · " + hoje;
+  $("#fundo").classList.add("aberta");
+  $("#cliente").focus();
+}
+
+function atualizarAviso(){
+  const sel = selecionados();
+  const p = [];
+  if (sel.some(s => s.item.apartirDe))
+    p.push("Alguns itens partem de um valor mínimo e são fechados depois do briefing, conforme a complexidade.");
+  if (sel.some(s => s.ajuste !== null && s.ajuste !== s.item.preco))
+    p.push("Há valores ajustados especificamente para este projeto.");
+  p.push("Este total é uma estimativa; o valor final é confirmado no orçamento.");
+  $("#aviso").textContent = p.join(" ");
+}
+
+function atualizarTotais(){
+  const tf = $("#totalFolha");
+  if (tf) tf.textContent = brl(total());
+  atualizar();
+  atualizarAviso();
+}
+
+$("#linhas").addEventListener("input", e => {
+  const inp = e.target.closest("input.pu");
+  if (!inp) return;
+  const st = estado.get(inp.dataset.id);
+  st.ajuste = Math.max(0, Math.round(parseFloat(inp.value) || 0));
+  inp.closest(".linha").querySelector(".lin-total").textContent = brl(st.ajuste * st.qtd);
+  document.querySelector(`[data-base="${inp.dataset.id}"]`).hidden = (st.ajuste === st.item.preco);
+  atualizarTotais();
+});
+
+$("#linhas").addEventListener("click", e => {
+  const b = e.target.closest("button[data-r]");
+  if (!b) return;
+  const st = estado.get(b.dataset.r);
+  st.ajuste = null;
+  const linha = b.closest(".linha");
+  const inp = linha.querySelector("input.pu");
+  if (inp) inp.value = st.item.preco;
+  linha.querySelector(".lin-total").textContent = brl(st.item.preco * st.qtd);
+  b.closest(".lin-base").hidden = true;
+  atualizarTotais();
+});
+
+function textoOrcamento(){
+  const nome = $("#cliente").value.trim();
+  let t = "*Orçamento — " + CONFIG.nome + "*\n";
+  if (nome) t += "Cliente: " + nome + "\n";
+  t += "\n";
+  selecionados().forEach(s => {
+    t += "• " + s.qtd + "× " + s.item.nome + " — " + brl(s.qtd * precoUnit(s)) + "\n";
+  });
+  t += "\n*Total estimado: " + brl(total()) + "*\n";
+  t += "\nEstimativa gerada na tabela de serviços. Podemos fechar o escopo pelo briefing.";
+  return t;
+}
+
+$("#btVer").onclick = abrirFolha;
+$("#btFechar").onclick = () => $("#fundo").classList.remove("aberta");
+$("#fundo").onclick = e => { if (e.target.id === "fundo") $("#fundo").classList.remove("aberta"); };
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("#fundo").classList.remove("aberta"); });
+
+$("#btLimpar").onclick = () => {
+  estado.forEach(s => { s.qtd = 0; s.ajuste = null; });
+  document.querySelectorAll(".item").forEach(r => {
+    r.classList.remove("on");
+    const o = r.querySelector("output"); if (o) o.textContent = "0";
+    const m = r.querySelector('[data-a="-"]'); if (m) m.disabled = true;
+  });
+  atualizar();
+};
+
+$("#btZap").onclick = () => window.open(zapLink(textoOrcamento()), "_blank");
+
+$("#btCopiar").onclick = async e => {
+  const b = e.currentTarget;
+  try { await navigator.clipboard.writeText(textoOrcamento()); b.textContent = "Texto copiado"; }
+  catch { b.textContent = "Não foi possível copiar"; }
+  setTimeout(() => b.textContent = "Copiar texto", 2200);
+};
+
+$("#btPdf").onclick = () => window.print();
+
+atualizar();
+</script>
+</body>
+</html>
