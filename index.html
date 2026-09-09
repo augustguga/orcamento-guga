@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tabela de serviços — Guga, direção de arte e filmmaker</title>
-<meta name="description" content="Design, campanha e vídeo com o preço na mesa. Monte seu orçamento e envie direto pelo WhatsApp.">
+<title>Orçamento de design, ilustração e vídeo</title>
+<meta name="description" content="Tabela aberta de serviços criativos: design, ilustração, campanha e edição de vídeo. Monte seu orçamento e envie pelo WhatsApp.">
 <meta name="theme-color" content="#0A0A0C">
-<meta property="og:title" content="Tabela de serviços — Guga">
-<meta property="og:description" content="Design, campanha e vídeo com o preço na mesa. Monte seu orçamento em um minuto.">
+<meta property="og:title" content="Orçamento de design, ilustração e vídeo">
+<meta property="og:description" content="Tabela aberta de serviços criativos. Monte seu orçamento em um minuto.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -294,7 +294,7 @@ button{font:inherit;color:inherit}
 <section class="hero" id="topo">
   <div class="wrap hero-in">
     <p class="selo"><b>●</b> Tabela aberta <span id="seloVig"></span></p>
-    <h1>Orçamento de design e vídeo</h1>
+    <h1>Orçamento de design, ilustração e vídeo</h1>
     <p class="lead">Escolha as peças que você precisa, veja o total na hora e receba a proposta sem esperar orçamento.</p>
     <div class="hero-bt">
       <button class="bt bt-p" onclick="document.getElementById('servicos').scrollIntoView()">Montar meu orçamento</button>
@@ -337,10 +337,7 @@ button{font:inherit;color:inherit}
   </div>
   <div class="wrap rodape">
     <div class="rodape-in">
-      <div class="sig">
-        <div class="nm" id="sigNome"></div>
-        <div class="fn" id="sigFuncao"></div>
-      </div>
+      <div class="sig" id="sig"></div>
       <div class="contatos" id="contatos"></div>
     </div>
     <p class="legal" id="legal"></p>
@@ -385,13 +382,13 @@ button{font:inherit;color:inherit}
    1. SEUS DADOS
    ═══════════════════════════════════════════════ */
 const CONFIG = {
-  assinatura: "guga",                        // marca pequena no topo
-  nome:       "Guga",                        // assinatura do rodapé
-  funcao:     "Direção de arte e filmmaker",
+  assinatura: "orçamento",                   // rótulo pequeno no topo
+  nome:       "",                            // vazio = página sem assinatura pessoal
+  funcao:     "Design, ilustração e edição de vídeo",
   local:      "Brusque, SC",
-  whatsapp:   "5547900000000",               // 55 + DDD + número, só dígitos
-  email:      "contato@seudominio.com.br",
-  instagram:  "@seuinstagram",
+  whatsapp:   "5547992666019",               // 55 + DDD + número, só dígitos
+  email:      "",                            // vazio = não aparece
+  instagram:  "",                            // vazio = não aparece
   vigencia:   "2026",
   validade:   "Proposta válida por 15 dias",
 
@@ -415,6 +412,13 @@ const CATALOGO = [
         desc:"Logotipo, paleta de cores, tipografia, aplicações e manual de identidade visual em PDF." },
       { nome:"Cartão de visita", preco:200, unidade:"modelo",
         desc:"Frente e verso, arte fechada e pronta para a gráfica." }
+    ]
+  },
+  {
+    grupo: "Ilustração",
+    itens: [
+      { nome:"Ilustração autoral", preco:300, apartirDe:true, unidade:"ilustração",
+        desc:"Valor de partida. Cada ilustração depende da ideia, da técnica e do nível de detalhe, então fecho um orçamento específico depois de entender o que você imaginou." }
     ]
   },
   {
@@ -489,7 +493,7 @@ const CONDICOES = [
   ["Pagamento",
    "Combinado na etapa de orçamento, conforme o tamanho e o prazo do projeto."],
   ["Material gerado por IA",
-   "Imagens e vídeos em IA entram como item no orçamento, porque envolvem custo de ferramenta e várias rodadas de geração até o resultado aprovado. Em vídeo, cada ajuste significa gerar as cenas de novo: estão inclusas 2 rodadas."],
+   "As 3 rodadas de ajuste não valem para material em IA. Está inclusa uma alteração, desde que não exija gerar o material de novo. Se for preciso refazer as gerações, o custo é levantado e aprovado por você antes de eu executar."],
   ["Direitos e entrega de arquivos",
    "Você recebe os arquivos finais com direito de uso pleno das peças. Os arquivos editáveis permanecem comigo. Em material que vai para gráfica, envio também o .eps, para facilitar a impressão e mudanças de formato."],
   ["Aprovação",
@@ -505,17 +509,22 @@ const $ = s => document.querySelector(s);
 const zapLink = txt => "https://wa.me/" + CONFIG.whatsapp + (txt ? "?text=" + encodeURIComponent(txt) : "");
 
 /* identidade */
-$("#sigTopo").textContent  = CONFIG.assinatura;
-$("#sigNome").textContent  = CONFIG.nome;
-$("#sigFuncao").textContent= CONFIG.funcao;
-$("#seloVig").textContent  = CONFIG.vigencia;
+$("#sigTopo").textContent = CONFIG.assinatura;
+$("#seloVig").textContent = CONFIG.vigencia;
 $("#zapTopo").href = $("#zapFim").href = zapLink("Oi! Vim pela tabela de serviços.");
-$("#contatos").innerHTML =
-  `<div>${CONFIG.local}</div>
-   <div><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></div>
-   <div><a href="${zapLink("")}" target="_blank" rel="noopener">WhatsApp</a> · ${CONFIG.instagram}</div>`;
+
+$("#sig").innerHTML = CONFIG.nome
+  ? `<div class="nm">${CONFIG.nome}</div><div class="fn">${CONFIG.funcao} · ${CONFIG.local}</div>`
+  : `<div class="nm">${CONFIG.funcao}</div><div class="fn">${CONFIG.local}</div>`;
+
+$("#contatos").innerHTML = [
+  `<div><a href="${zapLink("")}" target="_blank" rel="noopener">WhatsApp</a></div>`,
+  CONFIG.email     ? `<div><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></div>` : "",
+  CONFIG.instagram ? `<div>${CONFIG.instagram}</div>` : ""
+].join("");
+
 $("#legal").textContent =
-  `${CONFIG.nome} · ${CONFIG.funcao} · Tabela ${CONFIG.vigencia}. ${CONFIG.validade}. Valores sujeitos a alteração sem aviso prévio.`;
+  `${CONFIG.nome ? CONFIG.nome + " · " : ""}${CONFIG.funcao} · Tabela ${CONFIG.vigencia}. ${CONFIG.validade}. Valores sujeitos a alteração sem aviso prévio.`;
 
 /* lista */
 const lista = $("#lista");
